@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Opportunity Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-mark">R</div>
+        <div>
+            <p class="eyebrow">UNIVERSITY RESEARCH</p>
+            <h1>Opportunity Portal</h1>
+        </div>
+        <div class="topbar-note">Discover. Collaborate. Research.</div>
+    </header>
+
+    <main class="page-wrap">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">YOUR NEXT BIG IDEA STARTS HERE</p>
+                <h2>Find your place in<br>meaningful research.</h2>
+                <p class="hero-copy">Explore research openings shared by faculty across the university.</p>
+            </div>
+            <div class="hero-symbol" aria-hidden="true">✳</div>
+        </section>
+
+        <div id="message" class="message hidden" role="status" aria-live="polite"></div>
+
+        <section class="toolbar">
+            <div>
+                <p class="eyebrow">OPPORTUNITY BOARD</p>
+                <h2 class="section-title">Research opportunities <span id="opportunity-count" class="count">0</span></h2>
+            </div>
+            <div class="toolbar-actions">
+                <select id="status-filter" aria-label="Filter by status">
+                    <option value="All">All statuses</option>
+                    <option value="Open">Open only</option>
+                    <option value="Closed">Closed only</option>
+                </select>
+                <button id="new-button" class="button button-primary" type="button">+ New opportunity</button>
+            </div>
+        </section>
+
+        <section id="opportunity-list" class="opportunity-grid" aria-live="polite">
+            <p class="loading">Loading opportunities…</p>
+        </section>
+
+        <section id="empty-state" class="empty-state hidden">
+            <div class="empty-icon">⌕</div>
+            <h3>No opportunities found</h3>
+            <p>Try another filter or create a new research opportunity.</p>
+        </section>
+
+        <footer>University Research Opportunity Portal <span>·</span> A central place for discovery and collaboration</footer>
+    </main>
+
+    <div id="form-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="form-heading">
+        <div class="modal-card modal-large">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">OPPORTUNITY DETAILS</p>
+                    <h2 id="form-heading">Create opportunity</h2>
+                </div>
+                <button class="icon-button" id="close-form" type="button" aria-label="Close form">×</button>
+            </div>
+            <form id="opportunity-form">
+                <div class="form-grid">
+                    <label class="full-width">Research title *
+                        <input name="title" required maxlength="200" placeholder="e.g. AI for Early Disease Detection">
+                    </label>
+                    <label class="full-width">Research description *
+                        <textarea name="description" required rows="3" placeholder="Describe the research project and its goals"></textarea>
+                    </label>
+                    <label>Research area *
+                        <input name="research_area" required placeholder="e.g. Artificial Intelligence">
+                    </label>
+                    <label>Faculty member's name *
+                        <input name="faculty_name" required placeholder="e.g. Dr. Sara Ahmed">
+                    </label>
+                    <label>Department *
+                        <input name="department" required placeholder="e.g. Computer Science">
+                    </label>
+                    <label>Required skills *
+                        <input name="required_skills" required placeholder="e.g. Python, data analysis">
+                    </label>
+                    <label>Available positions *
+                        <input name="positions" required type="number" min="1" step="1" value="1">
+                    </label>
+                    <label>Application deadline *
+                        <input name="deadline" required type="date">
+                    </label>
+                    <label>Status *
+                        <select name="status" required>
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </label>
+                </div>
+                <p class="form-hint">Fields marked with * are required.</p>
+                <div class="form-actions">
+                    <button id="cancel-form" class="button button-light" type="button">Cancel</button>
+                    <button class="button button-primary" id="save-button" type="submit">Save opportunity</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="details-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="details-heading">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div><p class="eyebrow">FULL DETAILS</p><h2 id="details-heading">Research opportunity</h2></div>
+                <button class="icon-button" id="close-details" type="button" aria-label="Close details">×</button>
+            </div>
+            <div id="details-content" class="details-content"></div>
+            <div class="form-actions">
+                <button id="details-edit" class="button button-primary" type="button">Edit opportunity</button>
+                <button id="details-close-status" class="button button-light" type="button">Close opportunity</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "info": {
+    "_postman_id": "4e15d3a1-91f0-4a84-a85c-cc64bb92b124",
+    "name": "University Research Opportunity Portal",
+    "description": "CRUD and validation tests for the Flask Research Opportunity Portal API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "http://127.0.0.1:5000"},
+    {"key": "opportunityId", "value": "1"}
+  ],
+  "item": [
+    {
+      "name": "1 - Create opportunity 1",
+      "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"title\": \"AI for Early Disease Detection\",\n  \"description\": \"Explore machine learning methods to identify early warning signs from anonymized medical data.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Sara Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, machine learning, data analysis\",\n  \"positions\": 2,\n  \"deadline\": \"2027-01-15\",\n  \"status\": \"Open\"\n}"}, "url": "{{baseUrl}}/api/opportunities"},
+      "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 201 Created', function () { pm.response.to.have.status(201); });", "const body = pm.response.json();", "if (body.id) pm.collectionVariables.set('opportunityId', body.id);"]}}]
+    },
+    {
+      "name": "2 - Create opportunity 2",
+      "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"title\": \"Smart Agriculture and IoT\",\n  \"description\": \"Study low-cost sensors and data models for monitoring soil and crop conditions.\",\n  \"research_area\": \"Internet of Things\",\n  \"faculty_name\": \"Dr. Hamza Khan\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"C++, sensors, data collection\",\n  \"positions\": 3,\n  \"deadline\": \"2027-02-10\",\n  \"status\": \"Open\"\n}"}, "url": "{{baseUrl}}/api/opportunities"},
+      "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 201 Created', function () { pm.response.to.have.status(201); });"]}}]
+    },
+    {
+      "name": "3 - Create opportunity 3",
+      "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"title\": \"Cybersecurity Threat Analysis\",\n  \"description\": \"Analyze network traffic patterns and evaluate methods for detecting suspicious activity.\",\n  \"research_area\": \"Cybersecurity\",\n  \"faculty_name\": \"Dr. Ayesha Noor\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Networking, Python, Linux\",\n  \"positions\": 1,\n  \"deadline\": \"2027-03-01\",\n  \"status\": \"Open\"\n}"}, "url": "{{baseUrl}}/api/opportunities"},
+      "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 201 Created', function () { pm.response.to.have.status(201); });"]}}]
+    },
+    {"name": "4 - Retrieve all opportunities", "request": {"method": "GET", "header": [], "url": "{{baseUrl}}/api/opportunities"}, "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 200 OK', function () { pm.response.to.have.status(200); });", "pm.test('Response is an array', function () { pm.expect(pm.response.json()).to.be.an('array'); });"]}}]},
+    {"name": "5 - Retrieve one opportunity", "request": {"method": "GET", "header": [], "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"}, "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 200 OK', function () { pm.response.to.have.status(200); });"]}}]},
+    {
+      "name": "6 - Update opportunity",
+      "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"title\": \"AI for Early Disease Detection - Updated\",\n  \"description\": \"Explore machine learning methods to identify early warning signs from anonymized medical data.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Sara Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, machine learning, data analysis, statistics\",\n  \"positions\": 3,\n  \"deadline\": \"2027-01-20\",\n  \"status\": \"Open\"\n}"}, "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"},
+      "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 200 OK', function () { pm.response.to.have.status(200); });"]}}]
+    },
+    {
+      "name": "7 - Close opportunity",
+      "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"title\": \"AI for Early Disease Detection - Updated\",\n  \"description\": \"Explore machine learning methods to identify early warning signs from anonymized medical data.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Sara Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, machine learning, data analysis, statistics\",\n  \"positions\": 3,\n  \"deadline\": \"2027-01-20\",\n  \"status\": \"Closed\"\n}"}, "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"},
+      "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 200 OK', function () { pm.response.to.have.status(200); });", "pm.test('Opportunity is Closed', function () { pm.expect(pm.response.json().status).to.eql('Closed'); });"]}}]
+    },
+    {"name": "8 - Invalid request (missing fields)", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"title\": \"Incomplete opportunity\"\n}"}, "url": "{{baseUrl}}/api/opportunities"}, "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 400 Bad Request', function () { pm.response.to.have.status(400); });"]}}]},
+    {"name": "9 - Delete opportunity", "request": {"method": "DELETE", "header": [], "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"}, "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 200 OK', function () { pm.response.to.have.status(200); });"]}}]},
+    {"name": "10 - Confirm deleted opportunity returns 404", "request": {"method": "GET", "header": [], "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"}, "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('Status is 404 Not Found', function () { pm.response.to.have.status(404); });"]}}]}
+  ]
+}

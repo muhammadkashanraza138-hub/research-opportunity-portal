@@ -1,0 +1,249 @@
+{
+  "info": {
+    "_postman_id": "4cf32461-133c-4a89-a02b-9dffb187f470",
+    "name": "Research Opurtunnity portal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58864755",
+    "_collection_link": "https://go.postman.co/collection/58864755-4cf32461-133c-4a89-a02b-9dffb187f470?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Oppurtunity 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Cyber Research Assistant\",\n  \"description\": \"Work on a Cyber research project.\",\n  \"research_area\": \"Cyber Security\",\n  \"faculty_name\": \"Dr Khizar\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Linux, python\",\n  \"positions\": 2,\n  \"deadline\": \"2026-12-15\",\n  \"status\": \"Open\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Oppurtunity 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"AI Research Assistant\",\n  \"description\": \"Work on a machine learning research project.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, Machine Learning\",\n  \"positions\": 2,\n  \"deadline\": \"2026-12-15\",\n  \"status\": \"Open\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Oppurtunity 3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Data Science Research Project\",\n  \"description\": \"Analyze university research data using statistical methods.\",\n  \"research_area\": \"Data Science\",\n  \"faculty_name\": \"Dr. Bilal\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, Data Analysis, SQL\",\n  \"positions\": 2,\n  \"deadline\": \"2026-12-25\",\n  \"status\": \"Open\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Opportunities",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get one request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update oppurtunity",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Cybersecurity Research Project\",\n  \"description\": \"Research network security and intrusion detection.\",\n  \"research_area\": \"Cybersecurity\",\n  \"faculty_name\": \"Dr. Sara\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Linux, Networking, Python, Wireshark\",\n  \"positions\": 3,\n  \"deadline\": \"2026-12-20\",\n  \"status\": \"Open\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/opportunities/2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "opportunities",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Close Oppurtunity",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Cybersecurity Research Project\",\n  \"description\": \"Research network security and intrusion detection.\",\n  \"research_area\": \"Cybersecurity\",\n  \"faculty_name\": \"Dr. Sara\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Linux, Networking, Python, Wireshark\",\n  \"positions\": 3,\n  \"deadline\": \"2026-12-20\",\n  \"status\": \"Closed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/opportunities/2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "opportunities",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete oppurtunity",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Deleted oppurtunity",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid Oppurtunity",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"description\": \"\",\n  \"research_area\": \"\",\n  \"faculty_name\": \"\",\n  \"department\": \"\",\n  \"required_skills\": \"\",\n  \"positions\": 0,\n  \"deadline\": \"\",\n  \"status\": \"Unknown\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
